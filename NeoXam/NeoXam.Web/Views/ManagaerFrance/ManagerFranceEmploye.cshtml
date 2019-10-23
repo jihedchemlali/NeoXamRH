@@ -1,0 +1,77 @@
+﻿@model IEnumerable<NeoXam.Web.Models.employe>
+@{
+    ViewBag.Title = "ManagerFranceEmploye";
+    Layout = "~/Views/Shared/_LayoutAhmed.cshtml";
+}
+
+<h2>ManagerFranceEmploye</h2>
+
+
+
+
+
+<table id="idmanager" cellpadding="2" cellspacing="2" border="1">
+    <thead>
+    <tr>
+        <th> cin</th>
+        <th>Nom </th>
+        <th>Prenom </th>
+        <th>Email </th>
+        <th>numero Tel </th>
+    </tr>
+    </thead>
+    <tbody>
+
+    @foreach (var customer in Model)
+    {
+        <tr>
+            <td>@customer.CIN</td>
+
+            <td>@customer.Nom</td>
+
+            <td>@customer.Prenom</td>
+
+            <td>@customer.Email</td>
+
+            <td>@customer.numTel</td>
+        </tr>
+
+
+    }
+    </tbody>
+
+</table>
+
+
+@section scripts
+{ 
+ 
+
+
+    <script>
+
+        $(document).ready(function () {
+            $("#idmanager").DataTable();
+            $("#idmanager .js-delete").on("click", function () {
+      
+
+
+
+                console.log("dddd");
+
+
+               
+                    //$.ajax({
+                    //    url: "/Critere/Delete/" + button.attr("dat-critere-id"),
+                    //    methode: "DELETE",
+                    //    success: function () {
+                    //        button.closest("tr").remove();
+                    //    }
+                    //});
+                
+            });
+              
+        });
+
+    </script>
+}

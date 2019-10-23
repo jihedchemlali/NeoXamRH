@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="NeoXam Show Departement" />
+	<ui:param name="param_page" value="Show Departement" />
+
+	<ui:define name="ContainerPI">
+		<h:form id="form">
+			<h:panelGrid columns="4">
+				<h:outputText value="CIN" />
+				<p:inputText id="cin" value="#{employeBean.cin}" required="true"
+					class="form-control" requiredMessage="champ obligatoire"
+					validatorMessage="Invalide CIN">
+					<f:validateRegex pattern="[0-9]{8}" />
+				</p:inputText>
+				<h:message for="cin" style="color:red" />
+				<h:outputText value="" />
+
+
+				<h:outputText value="Nom" />
+				<p:inputText id="nom" value="#{employeBean.nom}" required="true"
+					class="form-control" requiredMessage="champ obligatoire"
+					validatorMessage="Nom contient au moins 3 lettres">
+					<f:validateLength minimum="3" />
+					<f:validateRegex pattern="^[_A-Za-z]*$" />
+				</p:inputText>
+				<h:message for="nom" style="color:red" />
+				<h:outputText value="" />
+				<h:outputText value="" />
+				<h:selectOneMenu id="dep" class="form-control"
+					value="#{employeBean.idDep}" required="true"
+					requiredMessage="Dep non sélectionné ">
+					<f:selectItem itemLabel="Choisir Departement" itemValue="" />
+					<f:selectItems value="#{employeBean.departements}"
+						var="departement" itemValue="#{departement.idDep}"
+						itemLabel="#{departement.libelleDep}" />
+				</h:selectOneMenu>
+				<h:message for="dep" style="color:red" />
+				<h:outputText value="" />
+				<h:outputText value="" />
+				<p:commandButton value="Confirmer" class="btn btn-info"
+					icon="ui-icon-check" update="form"
+					action="#{employeBean.MettreAjourEmp2()}" />
+			</h:panelGrid>
+		</h:form>
+		<h:panelGroup columns="2">
+
+			<h:form>
+				<h2>Liste des départements disponnible :</h2>
+				<p:dataTable value="#{departementBean.departements}"
+					var="departement" border="1" rows="5" paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Id Departement" />
+						</f:facet>
+						<h:outputText value="#{departement.idDep}" />
+					</p:column>
+					<p:column headerText="NOM DEPARTEMENT"
+						filterBy="#{departement.libelleDep}" filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{departement.libelleDep}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId2"
+									value="#{departement.libelleDep}" style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+				</p:dataTable>
+			</h:form>
+		</h:panelGroup>
+		<h:panelGroup columns="2">
+			<h2>Liste des employés :</h2>
+			<h:form>
+				<p:dataTable value="#{employeBean.employes}" var="employe" rows="5"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+
+					<p:column headerText="         CIN" filterBy="#{employe.cin}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.cin}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId" value="#{employe.cin}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+
+					<p:column headerText="NOM" filterBy="#{employe.nom}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.nom}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId2" value="#{employe.nom}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Departement" filterBy="#{employe.departement.idDep}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.departement.idDep}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId3" value="#{employe.departement.idDep}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+				
+			
+					<p:column style="width:140px">
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<p:commandButton value="Affecter" icon="ui-icon-check"
+							update="form" action="#{employeBean.update2(employe)}" />
+					</p:column>
+
+				</p:dataTable>
+
+
+
+			</h:form>
+
+		</h:panelGroup>
+
+
+	</ui:define>
+
+</ui:composition>

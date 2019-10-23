@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui"
+	
+	>
+
+	<h:head>
+          <title>NeoXam - Pidev Project</title>
+
+       
+        <link rel="shortcut icon" href="../../resources/assets/images/Souslogo.jpeg"/>
+        <link rel="stylesheet" href="../../resources/assets/plugins/morris/morris.css" />
+        <link href="../../resources/assets/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/assets/css/icons.css" rel="stylesheet" type="text/css"/>
+        <link href="../../resources/assets/css/style.css" rel="stylesheet" type="text/css"/>
+        
+        
+        <link href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"  rel="stylelsheet" />
+    
+    <style>
+    
+    thead
+    
+    
+    {  
+      background-color: steelblue;
+    color: white;
+    
+    }
+    	
+    </style>
+    
+    </h:head>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+
+ <h:body class="fixed-left">
+    <div id="wrapper" style="">
+           <ui:include src="/template/SideBar.xhtml" />
+
+            <!-- Start right Content here -->
+
+            <div class="content-page">
+                <!-- Start content -->
+                <div class="content">
+              
+
+                    <div class="page-content-wrapper ">
+
+                        <div class="container-fluid">
+    
+    
+
+            <!-- Start right Content here -->
+
+              
+            
+
+                   
+                       
+    
+    
+	
+<div class="alert alert-info">Statistique projet</div>
+
+	<h:panelGroup columns="2">
+
+	
+	<h:inputHidden value="#{statisticBean.Statistic()}" id="chartValue"></h:inputHidden>
+	<div class="col-md-12" >
+
+	<div id="chart">
+	
+	
+	</div>
+
+		</div>
+	</h:panelGroup>
+	
+	
+	
+	
+	</div>
+	</div>
+	</div>
+	</div>
+	</div>
+	
+<script src="https://code.highcharts.com/highcharts.js"></script>
+<script src="https://code.highcharts.com/modules/exporting.js"></script>
+<script src="https://code.highcharts.com/modules/export-data.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){
+
+	var val=$('#chartValue').val();
+
+	var obj = JSON.parse(val);
+	console.log(obj);
+	
+	
+	Highcharts.chart('chart', {
+	    chart: {
+	        plotBackgroundColor: null,
+	        plotBorderWidth: null,
+	        plotShadow: false,
+	        type: 'pie'
+	    },
+	    title: {
+	        text: 'statistic project 2018'
+	    },
+	    tooltip: {
+	        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+	    },
+	    plotOptions: {
+	        pie: {
+	            allowPointSelect: true,
+	            cursor: 'pointer',
+	            dataLabels: {
+	                enabled: false
+	            },
+	            showInLegend: true
+	        }
+	    },
+	    series: [{
+	        name: 'Brands',
+	        colorByPoint: true,
+	        data: obj
+	   
+	    }]
+	});
+		
+
+	
+});
+
+
+</script>
+
+</h:body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"     template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+<ui:param name="param_page" value="Ajouter un candidat" />
+
+
+<ui:define name="ContainerPI">   
+
+			<div class="container-fluid">                                  	  
+			<h:panelGroup columns="2">
+			<h:form >
+				<table >
+					<tr>
+						<td><h:outputText value="CIN "></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.cin}"></h:inputText></td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value="Nom"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.nom}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Prenom"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.prenom}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Email"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.email}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Téléphone"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.numTel}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Adresse"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.adresse}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="LinkedIn"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.linkedin}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Resume"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.resume}"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td colspan="2"><h:commandLink value="Ajouter Candidat"
+								action="#{candidatBean.addCandidat()}" /></td>
+					</tr>
+				</table>
+			</h:form>
+		</h:panelGroup>
+
+                        		
+			</div><!-- container -->
+                    
+                
+</ui:define>
+</ui:composition>

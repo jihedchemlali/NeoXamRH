@@ -1,0 +1,35 @@
+﻿@model NeoXam.Domain.Entities.critere
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAhmed.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>critere</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.fait)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fait)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.risque)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.risque)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idcritere },new { @class = "btn btn-success" }) |
+    @Html.ActionLink("Back to List", "Index",null,new { @class = "btn btn-warning" })
+</p>

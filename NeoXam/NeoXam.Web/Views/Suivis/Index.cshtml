@@ -1,0 +1,52 @@
+﻿@model IEnumerable<NeoXam.Web.Models.suivi>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.employe.CIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateSuivi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EntretrienTCarriere)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eval)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.employe.CIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateSuivi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EntretrienTCarriere)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eval)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idSuiv }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idSuiv }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idSuiv })
+        </td>
+    </tr>
+}
+
+</table>

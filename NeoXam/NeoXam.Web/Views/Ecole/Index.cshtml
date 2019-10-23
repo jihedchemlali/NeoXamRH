@@ -1,0 +1,87 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.ecole>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="~/sweetalert/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="~/sweetalert/sweetalert2.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<div id="page-wrapper" style="min-height: 703px;">
+    <h2>Index</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.pays)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ville)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.rue)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.fax)
+                </th>
+                <th>
+                    @Html.DisplayName("Delete")
+                </th>
+                <th>
+                    @Html.DisplayName("Edit")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @item.Nom
+                    </td>
+                    <td>
+                        @item.pays
+                    </td>
+                    <td>
+                        @item.ville
+                    </td>
+                    <td>
+                        @item.rue
+                    </td>
+                    <td>
+                        @item.fax
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-danger" href="@Url.Action("Delete", "Ecole", new { id = item.idEcole })">Supprimer</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-info" href="@Url.Action("Edit", "Ecole", new { id = item.idEcole })">Modifier</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-info" href="@Url.Action("Details", "Ecole", new { id = item.idEcole })">Details</a>
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

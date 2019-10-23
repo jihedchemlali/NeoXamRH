@@ -1,0 +1,66 @@
+﻿@model NeoXam.Web.Models.suivi
+
+@{
+    ViewBag.Title = "Details de suivi";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="col-sm-12">
+    <h4 class="text-secondary"> Liste de mes  Suivis</h4>
+    <div class="row">
+        <div class="col-md-5">
+
+            <input type="text" class="form-control" name="name" id="chercher" placeholder="Rechercher">
+
+        </div>
+    </div>
+    <dv class="row">
+
+
+        @Html.ActionLink("Faire un suivi", "Create", new { @class = "btn btn-success" })
+
+
+</div>
+
+<div>
+    <h4>suivi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.employe.adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.employe.adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSuivi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSuivi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntretrienTCarriere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntretrienTCarriere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eval)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idSuiv }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

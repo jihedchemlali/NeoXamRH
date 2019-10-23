@@ -1,0 +1,68 @@
+﻿@model NeoXam.Web.Models.salaire
+
+@{
+    ViewBag.Title = "supprimer";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="col-sm-12">
+    <h4 class="text-secondary"> Supprimer ce salaire</h4>
+    <h3 class="text-danger">Vous voulez supprimer ce salaire?</h3>
+</div>
+<div>
+    <h4>salaire</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bonus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bonus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateCreation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateCreation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moisEtAnne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moisEtAnne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.salaireBrut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.salaireBrut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.salaireNet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.salaireNet)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <div>
+                @Html.ActionLink("Retour à la liste des salaires", "Index", new { id = "" }, new { @class = "btn btn-outline-info" })
+            </div>
+        </div>
+    }
+</div>

@@ -1,0 +1,18 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.candidat>
+
+@{
+    ViewBag.Title = "Fiches";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Fiches</h2>
+<table class="table">
+    
+
+@foreach (var item in Model) {
+    
+            @Html.Partial("DetailsCandidat", item)
+       
+}
+
+</table>

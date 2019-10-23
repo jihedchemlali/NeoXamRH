@@ -1,0 +1,76 @@
+﻿@model NeoXam.Domain.Entities.formateur
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h4 class="mt-0 header-title">Details Formateur</h4>
+<p class="text-muted m-b-30 font-14">
+    Details Formateur .
+</p>
+<div class="media m-b-30">
+    
+    <div class="media-body">
+        <div class="form-group row">
+            @Html.DisplayNameFor(model => model.nom)
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.nom)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.DisplayNameFor(model => model.prenom)
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.prenom)
+            </div>
+        </div>
+        <div class="form-group row">
+           @Html.DisplayNameFor(model => model.address)
+            <div class="col-md-10">
+               @Html.DisplayFor(model => model.address)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.DisplayNameFor(model => model.numTel)
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.numTel)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.DisplayNameFor(model => model.email)
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.email)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.DisplayNameFor(model => model.facebook)
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.facebook)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.DisplayNameFor(model => model.linkedin)
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.linkedin)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.DisplayNameFor(model => model.Description)
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.Description)
+            </div>
+        </div>
+        <div class="form-group row">
+            @Html.DisplayNameFor(model => model.photo)
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.photo)
+            </div>
+        </div>
+        
+    </div>
+    <p>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.id }) |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+
+

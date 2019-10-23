@@ -1,0 +1,69 @@
+﻿@model NeoXam.Web.Models.FormationModel
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h4 class="mt-0 header-title">Create Formation</h4>
+<p class="text-muted m-b-30 font-14">
+    Ajouter une Formation à la liste des Formations de notre Entreprise NeoXam .
+</p>
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+      
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.libelle, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.libelle, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.libelle, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.lieux, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.lieux, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.lieux, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       
+
+        
+
+       
+
+        <div class="form-group row">
+            @Html.LabelFor(model => model.Dateformation, htmlAttributes: new { @class = "col-sm-2 col-form-label" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Dateformation, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Dateformation, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+       
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

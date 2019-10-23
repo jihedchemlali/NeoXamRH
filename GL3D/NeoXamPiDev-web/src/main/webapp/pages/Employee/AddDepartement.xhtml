@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="NeoXam Ajouter Departement" />
+	<ui:param name="param_page" value="Ajouter Departement" />
+
+	<ui:define name="ContainerPI">
+		<h:form id="form">
+			<h:panelGrid columns="2">
+				<h:outputText value="NOM DEPARTEMENT" />
+				<p:inputText id="dep" value="#{departementBean.libelleDep}"
+				required="true"
+					requiredMessage="champ obligatoire"
+					validatorMessage="Nom Departement contient au moins 2 lettres">
+					<f:validateLength minimum="2" />
+					<f:validateRegex pattern="^[_A-Za-z]*$" />
+				</p:inputText><br/><br/><br/>
+				<h:message for="dep" style="color:red" />
+				<h:outputText value="" />
+				<p:commandButton value="Ajouter Departement" update="form"
+					action="#{departementBean.addDep()}" /><br/><br/><br/>
+				<p:commandButton value="Mettre à jour"
+					action="#{departementBean.MettreAjourDep()}" />
+			</h:panelGrid>
+		</h:form>
+		<h:panelGroup columns="2">
+			<h:form>
+				<p:dataTable value="#{departementBean.departements}"
+					var="departement" border="1">
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Id Departement" />
+						</f:facet>
+						<h:outputText value="#{departement.idDep}" />
+					</p:column>
+					<p:column headerText="NOM DEPARTEMENT" filterBy="#{departement.libelleDep}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{departement.libelleDep}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId2" value="#{departement.libelleDep}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<p:commandButton value="suprimer"
+							action="#{departementBean.supprimer(departement.idDep)}" />
+					</p:column>
+
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<p:commandButton value="modifier" update="form"
+							action="#{departementBean.modifier(departement)}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<p:commandButton value="ShowDétails"
+							action="#{departementBean.afficherdetail(departement)}" />
+					</p:column>
+				
+
+				</p:dataTable>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+</ui:composition>

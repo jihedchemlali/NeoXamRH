@@ -1,0 +1,52 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.carriere>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr class="table-primary">
+        <th>
+            @Html.DisplayNameFor(model => model.DateDep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateFin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.niveau)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.societe)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr table-primary>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.niveau)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.societe)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { item.CIN, item.idExpe }, new { @class = "fa fa-pencil-square-o" }) |
+            
+            @Html.ActionLink("Delete", "Delete", new { item.CIN,item.idExpe }, new { @class = " fa fa-trash" })
+        </td>
+    </tr>
+}
+
+</table>

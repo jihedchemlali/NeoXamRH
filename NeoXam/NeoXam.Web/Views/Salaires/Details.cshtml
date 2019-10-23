@@ -1,0 +1,61 @@
+﻿@model NeoXam.Web.Models.salaire
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Detail du Salaire</h2>
+
+<div>
+    <h4>salaire</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.bonus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.bonus)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.dateCreation)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.dateCreation)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.moisEtAnne)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.moisEtAnne)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.salaireBrut)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.salaireBrut)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.salaireNet)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.salaireNet)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Modifier Salaire", "Edit", new { id = Model.idSalaire }, new { @class = "btn btn-warning" }) |
+    
+        @Html.ActionLink("Retour à la liste des salaires", "Index", new { id = "" }, new { @class = "btn btn-outline-info" })
+
+</p>

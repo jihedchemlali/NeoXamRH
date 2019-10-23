@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="NeoXam -Recherche" />
+	<ui:param name="param_page" value="Rechercher une réclamation" />
+
+	<ui:define name="ContainerPI">
+		<h:panelGroup>
+			<h:form>
+
+
+				<p:dataTable value="#{ReclamationBean.reclamations}" var="item"
+					border="1" class="table table-hover">
+					<p:column headerText="Motif" filterBy="#{item.motifs}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{item.motifs}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId1" value="#{item.motifs}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Description" filterBy="#{item.description}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{item.description}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId2" value="#{item.description}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Date création"
+						filterBy="#{item.dateCreation}" filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{item.dateCreation}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId3" value="#{item.dateCreation}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Date traitement"
+						filterBy="#{item.dateTraitement}" filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{item.dateTraitement}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId4" value="#{item.dateTraitement}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Etat"
+						filterBy="#{item.etat}" filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{item.etat}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId5" value="#{item.etat}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+								<p:column headerText="Commentaire"
+						filterBy="#{item.commentaire}" filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{item.commentaire}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId6" value="#{item.commentaire}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+
+</ui:composition>

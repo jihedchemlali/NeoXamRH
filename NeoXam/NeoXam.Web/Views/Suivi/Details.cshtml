@@ -1,0 +1,62 @@
+﻿@model NeoXam.Domain.Entities.suivi
+
+@{
+    ViewBag.Title = "Details du suivi";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="col-sm-12">
+    <h4 class="text-secondary"> Details de suivi</h4>
+    <div class="row">
+
+
+        @Html.ActionLink("Faire un suivi", "Create", new { @class = "btn btn-success" })
+
+
+    </div>
+</div>
+
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSuivi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSuivi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntretrienTCarriere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntretrienTCarriere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eval)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CIN)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("modifier", "Edit", new { id = Model.idSuiv }, new { @class = "btn btn-warning" })  |
+    <div>
+        @Html.ActionLink("Retour à mes Suivi", "Index", new { id = "" }, new { @class = "btn btn-outline-info" })
+    </div>
+</p>

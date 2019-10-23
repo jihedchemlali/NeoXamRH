@@ -1,0 +1,27 @@
+﻿@model NeoXam.Web.Models.stagiaire
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div id="page-wrapper" style="min-height: 703px;">
+
+    <h2>Delete</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <div>
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <form method="post" action="/Stagaire/Delete" novalidate>
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                </form>
+                       @Html.ActionLink("Back to List", "Index")
+            </div>
+        }
+    </div>
+</div>

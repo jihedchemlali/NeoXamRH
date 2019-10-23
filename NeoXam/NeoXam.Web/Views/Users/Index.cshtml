@@ -1,0 +1,90 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.user>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2 class="mt-0 header-title">list Users</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+<p class="text-muted m-b-30 font-14">
+    List des utilisateurs de Notre Application NeoXam</p>
+<table id="datatable" class="table table-bordered">
+    <thead>
+        <tr>
+            <th>username</th>
+            <th>email</th>
+            <th>actif</th>
+            <th>lastLogin</th>
+            <th>Role</th>
+            <th>Employe</th>
+            <th>Candidats</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.username)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.email)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.actif)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.lastLogin)
+                </td>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Role)
+                </td>
+
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.CAN_CIN)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Emp_CIN)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.idU }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.idU }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.idU })
+                </td>
+            </tr>
+        }
+
+     
+    </tbody>
+</table>
+@section Scripts
+{
+    <!-- Required datatable js -->
+    <script src="~/assets/plugins/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/assets/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+    <!-- Datatable init js -->
+    <script src="~/assets/pages/datatables.init.js"></script>
+    <!-- Buttons examples -->
+    <script src="~/assets/plugins/datatables/dataTables.buttons.min.js"></script>
+    <script src="~/assets/plugins/datatables/buttons.bootstrap4.min.js"></script>
+    <script src="~/assets/plugins/datatables/jszip.min.js"></script>
+    <script src="~/assets/plugins/datatables/pdfmake.min.js"></script>
+    <script src="~/assets/plugins/datatables/vfs_fonts.js"></script>
+    <script src="~/assets/plugins/datatables/buttons.html5.min.js"></script>
+    <script src="~/assets/plugins/datatables/buttons.print.min.js"></script>
+    <script src="~/assets/plugins/datatables/buttons.colVis.min.js"></script>
+    <!-- Responsive examples -->
+    <script src="~/assets/plugins/datatables/dataTables.responsive.min.js"></script>
+    <script src="~/assets/plugins/datatables/responsive.bootstrap4.min.js"></script>
+}

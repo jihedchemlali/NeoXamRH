@@ -1,0 +1,65 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"     template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+<ui:param name="page_name" value="NeoXam Show Departement" />
+<ui:param name="param_page" value="Show Departement" />
+
+<ui:define name="ContainerPI">
+<h:form id="form">
+			<h:panelGrid columns="2">
+				<h:outputText value="CIN" />
+				<p:inputText onchange="#{employeBean.cin}" ></p:inputText>
+				<h:outputText value="Nom" />
+				<p:inputText value="#{employeBean.nom}"></p:inputText>
+				<h:outputText value="Prenom" />
+				<p:inputText value="#{employeBean.prenom}"></p:inputText>
+				<h:outputText value="Adresse" />
+				<p:inputText value="#{employeBean.adresse}"></p:inputText>
+				<h:outputText value="Email" />
+				<p:inputText value="#{employeBean.email}"></p:inputText>
+				<h:outputText value="Email Personnel" />
+				<p:inputText value="#{employeBean.per_email}"></p:inputText>
+				<h:outputText value="Telephone" />
+				<p:inputText value="#{employeBean.numTel}"></p:inputText>
+				<h:outputText value="RIB" />
+				<p:inputText value="#{employeBean.rib}"></p:inputText>
+				<h:outputText value="Type" />
+				<p:inputText value="#{employeBean.type}"></p:inputText>
+				<h:outputText value="Nombre de jours" />
+				<p:inputText value="#{employeBean.nbrJours}"></p:inputText>
+				<h:outputText value="Date de rejoint" />
+				<p:inputText required="true"
+					requiredMessage="Date de rejoint Obligatoire"
+					value="#{employeBean.joinDate}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</p:inputText>
+				<h:outputText value="Dernier Jour" />
+				<p:inputText required="true"
+					requiredMessage="Dernier Jour Obligatoire"
+					value="#{employeBean.lastDay}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</p:inputText>
+				<h:selectOneMenu id="dep" value="#{employeBean.idDep}" required="true" requiredMessage="Departement Obligatoire">
+					<f:selectItem itemLabel="Choisir Departement" itemValue="" />
+					<f:selectItems value="#{employeBean.departements}"
+						var="departement" itemValue="#{departement.idDep}"
+						itemLabel="#{departement.libelleDep}" />
+				</h:selectOneMenu>
+				<h:message for="dep" style="color:red" />
+				<h:outputText value="" />
+				<h:outputText value="" />
+				<h:selectOneMenu id="grade" value="#{employeBean.idGrade}" required="true" requiredMessage="Grade Obligatoire">
+					<f:selectItem itemLabel="Choisir Grade" itemValue="" />
+					<f:selectItems value="#{employeBean.grades}" var="grade"
+						itemValue="#{grade.idGrade}" itemLabel="#{grade.libelleGrade}" />
+				</h:selectOneMenu>
+				<h:message for="grade" style="color:red" />
+				<h:outputText value="" />
+			</h:panelGrid>
+		</h:form> 
+
+</ui:define>
+      
+</ui:composition>

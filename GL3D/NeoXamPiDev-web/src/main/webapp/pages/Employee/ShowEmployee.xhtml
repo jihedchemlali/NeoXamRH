@@ -1,0 +1,327 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="NeoXam Show Employee" />
+	<ui:param name="param_page" value="Show Employee" />
+
+	<ui:define name="ContainerPI">
+
+		<h:panelGroup columns="2">
+
+			<h:form>
+				<p:dataTable value="#{employeBean.employes}" var="employe" rows="5"
+					paginator="true"
+					paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					rowsPerPageTemplate="5,10,15">
+
+					<p:column headerText="         CIN" filterBy="#{employe.cin}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.cin}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId" value="#{employe.cin}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+
+					<p:column headerText="NOM" filterBy="#{employe.nom}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.nom}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId2" value="#{employe.nom}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Prenom" filterBy="#{employe.prenom}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.prenom}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId3" value="#{employe.nom}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="ADRESSE" filterBy="#{employe.adresse}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.adresse}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId4" value="#{employe.adresse}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="EMAIL" filterBy="#{employe.email}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.email}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId5" value="#{employe.email}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Personnel --- Email"
+						filterBy="#{employe.perEmail}" filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.perEmail}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId6" value="#{employe.perEmail}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="NUM DE TELEPHONE"
+						filterBy="#{employe.numTel}" filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.numTel}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId7" value="#{employe.numTel}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+
+					<p:column headerText="Date de rejoint"
+						filterBy="#{employe.joinDate}" filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.joinDate}">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:outputText>
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId9" value="#{employe.joinDate}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="Date de sortie" filterBy="#{employe.lastDay}"
+						filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.lastDay}">
+									<f:convertDateTime pattern="dd-MM-yyyy" />
+								</h:outputText>
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId10" value="#{employe.lastDay}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column headerText="NOMBRE    DE   JOURS"
+						filterBy="#{employe.nbJours}" filterMatchMode="contains">
+						<p:cellEditor>
+							<f:facet name="output">
+								<h:outputText value="#{employe.nbJours}" />
+							</f:facet>
+							<f:facet name="input">
+								<p:inputText id="modelInputId11" value="#{employe.nbJours}"
+									style="width:100%" />
+							</f:facet>
+						</p:cellEditor>
+					</p:column>
+					<p:column style="width:140px">
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<p:commandButton value="suprimer"
+							action="#{employeBean.supprimer(employe.cin)}" />
+					</p:column>
+					<p:column style="width:140px">
+						<f:facet name="header">
+							<h:outputText value="Action" />
+						</f:facet>
+						<p:commandButton value="update" icon="ui-icon-search"
+							update="form" action="#{employeBean.update2(employe)}" />
+					</p:column>
+
+				</p:dataTable>
+
+
+
+			</h:form>
+
+		</h:panelGroup>
+
+		<h:form id="form">
+			<h:panelGrid columns="4">
+				<h:outputText value="CIN" />
+				<p:inputText id="cin" value="#{employeBean.cin}" required="true"
+					class="form-control" requiredMessage="champ obligatoire"
+					validatorMessage="Invalide CIN">
+					<f:validateRegex pattern="[0-9]{8}" />
+				</p:inputText>
+				<h:message for="cin" style="color:red" />
+				<h:outputText value="" />
+
+
+				<h:outputText value="Nom" />
+				<p:inputText id="nom" value="#{employeBean.nom}" required="true"
+					class="form-control" requiredMessage="champ obligatoire"
+					validatorMessage="Nom contient au moins 3 lettres">
+					<f:validateLength minimum="3" />
+					<f:validateRegex pattern="^[_A-Za-z]*$" />
+				</p:inputText>
+				<h:message for="nom" style="color:red" />
+				<h:outputText value="" />
+
+				<h:outputText value="Prenom" />
+				<p:inputText id="prenom" value="#{employeBean.prenom}"
+					class="form-control" required="true"
+					requiredMessage="champ obligatoire"
+					validatorMessage="Prenom contient au moins 3 lettres">
+					<f:validateLength minimum="3" />
+					<f:validateRegex pattern="^[_A-Za-z]*$" />
+				</p:inputText>
+				<h:message for="prenom" style="color:red" />
+				<h:outputText value="" />
+
+
+				<h:outputText value="Adresse" />
+				<p:inputText id="adresse" value="#{employeBean.adresse}"
+					class="form-control" required="true"
+					requiredMessage="champ obligatoire"
+					validatorMessage="Saisie une adresse correcte">
+					<f:validateLength minimum="3" />
+					<f:validateRegex pattern="^[_A-Za-z0-9]*$" />
+				</p:inputText>
+				<h:message for="adresse" style="color:red" />
+				<h:outputText value="" />
+
+
+				<h:outputText value="Email" />
+				<p:inputText id="email" value="#{employeBean.email}" required="true"
+					class="form-control" requiredMessage="champ obligatoire"
+					validatorMessage="Respecter ce format xxxxxx@xxx.xx">
+					<f:validateLength minimum="3" />
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					<f:passThroughAttribute name="placeHolder" value="xxxxxx@xxx.xx" />
+				</p:inputText>
+				<h:message for="email" style="color:red" />
+				<h:outputText value="" />
+
+
+				<h:outputText value="Email Personnel" />
+				<p:inputText id="emailper" value="#{employeBean.per_email}"
+					class="form-control" required="true"
+					requiredMessage="champ obligatoire"
+					validatorMessage="Respecter ce format xxxxxx@xxx.xx">
+					<f:validateLength minimum="3" />
+					<f:validateRegex
+						pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+					<f:passThroughAttribute name="placeHolder" value="xxxxxx@xxx.xx" />
+				</p:inputText>
+				<h:message for="emailper" style="color:red" />
+				<h:outputText value="" />
+
+				<h:outputText value="Telephone" />
+				<p:inputText id="tel" value="#{employeBean.numTel}" required="true"
+					class="form-control" requiredMessage="champ obligatoire"
+					validatorMessage="Invalide Numéro">
+					<f:validateRegex pattern="[0-9]{8}" />
+				</p:inputText>
+				<h:message for="tel" style="color:red" />
+				<h:outputText value="" />
+
+				<h:outputText value="RIB" />
+				<p:inputText id="rib" value="#{employeBean.rib}" required="true"
+					class="form-control" requiredMessage="champ obligatoire"
+					validatorMessage="Invalide Rib">
+					<f:validateLength minimum="8" />
+				</p:inputText>
+				<h:message for="rib" style="color:red" />
+				<h:outputText value="" />
+
+
+				<h:outputText value="Type" />
+				<p:inputText id="type" value="#{employeBean.type}" required="true"
+					class="form-control" requiredMessage="champ obligatoire"
+					validatorMessage="Type contient au moins 3 lettres">
+					<f:validateLength minimum="3" />
+					<f:validateRegex pattern="^[_A-Za-z]*$" />
+				</p:inputText>
+				<h:message for="nom" style="color:red" />
+				<h:outputText value="" />
+
+
+				<h:outputText value="Nombre de jours" />
+				<p:inputText id="nbj" value="#{employeBean.nbrJours}"
+					class="form-control" required="true"
+					requiredMessage="champ obligatoire">
+				</p:inputText>
+				<h:message for="nbj" style="color:red" />
+				<h:outputText value="" />
+
+
+				<h:outputText value="Date de rejoint" />
+				<p:calendar id="Jd" value="#{employeBean.joinDate}" required="true"
+					requiredMessage="Jour de rejoint Obligatoire" showOn="button" />
+				<h:outputText value="#{employeBean.joinDate}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:outputText>
+				<h:outputText value="" />
+				<h:message for="Jd" style="color:red" />
+				<h:outputText value="" />
+				<h:outputText value="" />
+				<h:outputText value="" />
+				<h:outputText value="Dernier jour" />
+				<p:calendar id="Ld" value="#{employeBean.lastDay}" required="true"
+					requiredMessage="Jour de rejoint Obligatoire" showOn="button" />
+				<h:outputText value="#{employeBean.lastDay}">
+					<f:convertDateTime pattern="dd-MM-yyyy" />
+				</h:outputText>
+				<h:outputText value="" />
+
+				<h:message for="Ld" style="color:red" />
+				<h:outputText value="" />
+				<h:outputText value="" />
+
+
+				<h:outputText value="" />
+
+				<h:outputText value="" />
+				<h:selectOneMenu id="grade" class="form-control"
+					value="#{employeBean.idGrade}" required="true"
+					requiredMessage="Grade Obligatoire">
+					<f:selectItem itemLabel="Choisir Grade" itemValue="" />
+					<f:selectItems value="#{employeBean.grades}" var="grade"
+						itemValue="#{grade.idGrade}" itemLabel="#{grade.libelleGrade}" />
+				</h:selectOneMenu>
+				<h:message for="grade" style="color:red" />
+				<h:outputText value="" />
+				<h:outputText value="" />
+				<p:commandButton value="Mettre à jour" class="btn btn-info"
+					icon="ui-icon-check" update="form"
+					action="#{employeBean.MettreAjourEmp()}" />
+
+			</h:panelGrid>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

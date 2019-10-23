@@ -1,0 +1,110 @@
+﻿@model IEnumerable<NeoXam.Web.Models.manager_france>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAhmed.cshtml";
+}
+
+<h2>Index</h2>
+
+<table id="idemplo"class="table table-bordered table-hover">
+    <thead>
+    <tr>
+
+        <th> cin</th>
+        <th>Nom </th>
+        <th>Prenom </th>
+        <th>Email </th>
+        <th>numero Tel </th>
+
+
+
+
+    </tr>
+    </thead>
+    <tbody id="table-content">
+        @*@foreach (var customer in Model)
+        {
+            <tr>
+                <td>@Html.ActionLink(customer.CIN, "ManagerFranceEmploye", "ManagaerFrance", new { id = customer.CIN }, null)</td>
+
+                <td>@customer.Nom</td>
+
+                <td>@customer.Prenom</td>
+
+                <td>@customer.Email</td>
+
+                <td>@customer.numTel</td>
+            </tr>
+
+
+        }*@
+    </tbody>
+</table>
+@section scripts
+{
+
+
+
+    <script>
+
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:18080/NeoXamPiDev-web/rest/managerFrances",
+                //data: DATA,
+                headers: { 'Access-Control-Allow-Origin': "*" },
+                "dataType": "jsonp",
+                success: function(data) {
+                    console.log(data);
+
+                    if (data.response === undefined) {
+                        var data = JSON.parse(data);
+                        $("#table-content").html(''); // clean da shit
+
+                        for (i in data.data) {
+                          
+                            $('#table-content').append('' +
+                                '<tr data-href="">' +
+                                '<td>' +
+                                data.data[i].cin +
+                                '</td>' +
+                                '<td>' +
+                                data.data[i].nom +
+                                '</td>' +
+                                '<td> ' +
+                                data.data[i].adresse +
+                                '</td>' +
+                                '<td> ' +
+                                '<input type="checkbox" name="box[' +
+                                i +
+                                '][retardBox]" value= "' +
+                                data.data[i].id +
+                                '" group = "e' +
+                                data.data[i].id +
+                                '" /> ' +
+                                '</td>' +
+                                '<td> ' +
+                                '<input type="checkbox" name="box[' +
+                                i +
+                                '][absenceBox]" value="' +
+                                data.data[i].id +
+                                '"  group = "e' +
+                                data.data[i].id +
+                                '" /> ' +
+                                '</td>' +
+                                '</tr>' +
+                                ''
+                            );
+                        }
+
+
+                    } else {
+                        $("#table-content").html('');
+                        $('#table-content').append('');
+                    }
+                }
+            
+            });
+        });
+    </script>
+}

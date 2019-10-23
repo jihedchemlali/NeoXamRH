@@ -1,0 +1,65 @@
+﻿@model NeoXam.Domain.Entities.suivi_risk
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAhmed.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>suivi_risk</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.critere.fait)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.critere.fait)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.employe.adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.employe.adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.equipe.labelEquipe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.equipe.labelEquipe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Suivi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Suivi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valeur)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

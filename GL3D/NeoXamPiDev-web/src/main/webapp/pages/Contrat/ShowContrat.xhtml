@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="NeoXam -Show contrat" />
+	<ui:param name="param_page" value="Show Contrat" />
+
+	<ui:define name="ContainerPI">
+		<h:panelGroup>
+
+			<h:form>
+				<p:dataTable var="contrat" value="#{ContratBean.contrats}"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink}"
+					paginator="true" rows="10" style="margin-bottom:20px">
+				
+					<p:column headerText="Employé">
+						<h:outputText value="#{contrat.employe.nom}" />
+					</p:column>
+					<p:column headerText="salaire">
+						<h:outputText value="#{contrat.salaire.salaireNet}" />
+					</p:column>
+					<p:column headerText="type">
+						<h:outputText value="#{contrat.type}" />
+					</p:column>
+
+					<p:column headerText="Date Debut">
+						<h:outputText value="#{contrat.dateDep}" />
+					</p:column>
+					<p:column headerText="Date fin">
+						<h:outputText value="#{contrat.dateFin}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Modifier" />
+						</f:facet>
+						<p:commandButton value="Mettre à jour" icon="ui-icon-add"
+							action="#{ContratBean.modifier(contrat)}" />
+					</p:column>
+					<p:column>
+						<f:facet name="header">
+							<h:outputText value="Supprimer" />
+						</f:facet>
+						<p:commandButton value="Suppprimer" icon="ui-icon-add"
+							action="#{ContratBean.supprimer(contrat.idContrat)}" />
+					</p:column>
+				</p:dataTable>
+			</h:form>
+		</h:panelGroup>
+	</ui:define>
+
+</ui:composition>

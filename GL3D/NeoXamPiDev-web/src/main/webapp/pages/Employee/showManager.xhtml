@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"     template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+<ui:param name="page_name" value="NeoXam Show Metier" />
+<ui:param name="param_page" value="Show Metier" />
+
+<ui:define name="ContainerPI">
+<h:form>
+			<h:panelGrid id="grid" cellpadding="5" columns="2"
+				style="margin-bottom:10px">
+				<f:facet name="header">
+					<p:messages id="msgs" />
+				</f:facet>
+
+				<p:outputLabel for="CIN" value="CIN :" />
+				<p:inputText id="CIN" value="#{ManagerBean.cin}" />
+
+				<p:outputLabel for="nom" value="Nom :" />
+				<p:inputText id="nom" value="#{ManagerBean.nom}" required="true"
+					requiredMessage="Surname is required." />
+
+				<p:outputLabel for="prenom" value="Prenom :" />
+				<p:inputText id="prenom" value="#{ManagerBean.prenom}" />
+
+
+				<p:outputLabel for="email" value="Email :" />
+				<p:inputText id="email" value="#{ManagerBean.email}" />
+
+
+				<p:outputLabel for="numTel" value="Numéro Tel :" />
+				<p:inputText id="numTel" value="#{ManagerBean.numTel}" />
+
+
+				<p:outputLabel for="adresse" value="Adresse :" />
+				<p:inputText id="adresse" value="#{ManagerBean.adresse}" />
+
+			</h:panelGrid>
+			<h:panelGrid columns="6" cellpadding="5">
+				<p:commandButton value="Modifier" id="btnAll"
+					actionListener="#{ManagerBean.updateManager()}" />
+			</h:panelGrid>
+		</h:form>
+</ui:define>
+      		
+</ui:composition>

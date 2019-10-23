@@ -1,0 +1,153 @@
+﻿<div class="left side-menu">
+    <button type="button" class="button-menu-mobile button-menu-mobile-topbar open-left waves-effect">
+        <i class="ion-close"></i>
+    </button>
+    <!-- LOGO -->
+    <div class="topbar-left">
+        <div class="text-center">
+            <!--<a href="index.html" class="logo">Admiry</a>-->
+            <a href="#" class="logo logo-admin"><img src="~/assets/images/Logo.jpeg" height="150" alt="logo"></a>
+        </div>
+    </div>
+    <div class="sidebar-inner slimscrollleft">
+        <div class="user-details">
+            <div class="text-center">
+                <img src="~/assets/images/users/avatar-6.jpg" alt="" class="rounded-circle">
+            </div>
+            <div class="user-info">
+                <h4 class="font-16">Steven Meyers</h4>
+                <span class="text-muted user-status"><i class="fa fa-dot-circle-o text-success"></i> Online</span>
+            </div>
+        </div>
+        <div id="sidebar-menu">
+            <ul>
+                <li class="menu-title">Main</li>
+                <li>
+                    <a href="index.html" class="waves-effect">
+                        <i class="ti-home"></i>
+                        <span> Dashboard</span>
+                    </a>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-multiple-outline"></i> <span>Employé</span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+
+                        <li>@Html.ActionLink("Ajouter Employee", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Liste Employé", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Ajouter Département", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Département", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Ajouter grade", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter grade", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Ajouter Métier", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Métier", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Manager France", "Index", "ManagaerFrance")</li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-box-outline"></i> <span> Poste </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+
+                        <li>@Html.ActionLink("Créer Poste", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter les Postes", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-projector-screen"></i> <span>Projet</span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li>@Html.ActionLink("Créer Projet", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Projet", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="ti-pencil-alt"></i><span>Stagaire </span><span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li>@Html.ActionLink("Ajouter Stagaire", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Stagaire", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-file-document"></i><span> Document</span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+
+                        <li>@Html.ActionLink("Créer Document", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter l'archive", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-teamviewer"></i><span>Équipe</span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+
+                        <li>@Html.ActionLink("Créer une équipe", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter les équipes", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-twitter"></i><span>Suivie </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+
+                        <li>@Html.ActionLink("effectuer suivie", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Suivie", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-cake"></i><span>Évenement </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+
+                        <li>@Html.ActionLink("ajouter évenement", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter évenement", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-elevation-rise"></i><span>Risque </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li>@Html.ActionLink("ajouter Critere", "Index", "Critere")</li>
+                        <li>@Html.ActionLink("ajouter Risque", "Create", "suivi_risk", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter risque", "Index", "suivi_risk", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-information"></i><span>Formation </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li>@Html.ActionLink("Ajouter formation", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Ajouter formation", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Ajouter formateur", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Liste formateur", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-information"></i><span>réclamations </span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li>@Html.ActionLink("Ajouter réclamations", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter réclamations", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+                    </ul>
+                </li>
+                <li class="has_sub">
+                    <a href="javascript:void(0);" class="waves-effect"><i class="mdi mdi-account-card-details"></i><span>Candidates</span> <span class="pull-right"><i class="mdi mdi-chevron-right"></i></span></a>
+                    <ul class="list-unstyled">
+                        <li>@Html.ActionLink("Recruter", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("ConsulterCandidates", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Employees", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+                        <li>@Html.ActionLink("Consulter Users", "Create", "Employe", routeValues: null, htmlAttributes: new { id = "CreateEmployeeLink" })</li>
+
+
+                    </ul>
+                </li>
+                <li>
+                    <a href="calendar.html" class=""><i class="ti-calendar"></i><span> </span></a>
+                </li>
+            </ul>
+        </div>
+        <div class="clearfix"></div>
+    </div> <!-- end sidebarinner -->
+</div>

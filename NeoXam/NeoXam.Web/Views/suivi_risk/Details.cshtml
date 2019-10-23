@@ -1,0 +1,59 @@
+﻿@model NeoXam.Domain.Entities.suivi_risk
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutAhmed.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>suivi_risk</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.critere.fait)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.critere.fait)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.employe.adresse)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.employe.adresse)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.equipe.labelEquipe)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.equipe.labelEquipe)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date_Suivi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date_Suivi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valeur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valeur)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.idSuiviRisk }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

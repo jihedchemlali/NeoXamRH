@@ -1,0 +1,64 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.diplome>
+    
+@{
+
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.idEcole)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.idEcole)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            <div class="btn-group">
+                <a class="btn btn-info" href="@Url.Action("Delete", "Diplome", new { id = item.diplomeId })">Supprimer</a>
+            </div>
+        </td>
+        <td>
+            <div class="btn-group">
+                <a class="btn btn-info" href="@Url.Action("Edit", "Diplome", new { id = item.diplomeId })">Modifier</a>
+            </div>
+        </td>
+        <td>
+            <div class="btn-group">
+                <a class="btn btn-info" href="@Url.Action("Details", "Diplome", new { id = item.diplomeId })">Details</a>
+            </div>
+        </td>
+        <!--
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.diplomeId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.diplomeId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.diplomeId })
+        </td>
+            -->
+    </tr>
+}
+
+</table>

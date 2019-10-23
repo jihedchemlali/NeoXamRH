@@ -1,0 +1,58 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.contrat>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateDep)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DateFin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Type)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idEmploye)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.idSalaire)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateDep)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DateFin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Type)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idEmploye)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.idSalaire)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idContrat }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idContrat }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idContrat })
+        </td>
+    </tr>
+}
+
+</table>

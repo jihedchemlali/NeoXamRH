@@ -1,0 +1,74 @@
+﻿@model NeoXam.Domain.Entities.equipe
+
+@{
+    List<SelectListItem> listItems = new List<SelectListItem>();
+    ViewBag.Title = "Cree une Equipe";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Create</h2>
+
+
+
+<h2>Create</h2>
+@using (Html.BeginForm("Create", "Equipe", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.labelEquipe, htmlAttributes: new
+   {
+       @class =
+ "control-label col-md-2"
+   })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.labelEquipe, new
+       {
+           htmlAttributes = new
+           {
+               @class = "form-control"
+           }
+       })
+            @Html.ValidationMessageFor(model => model.labelEquipe, "", new
+       {
+           @class
+= "text-danger"
+       })
+
+            <br />
+
+
+
+
+
+
+
+
+            @Html.DropDownList("ddlVendor", (SelectList)ViewData["mydep"], "--- choisir un projet ---", new { @class = "form-control" })
+
+
+
+        </div>
+        <br />
+
+    </div>
+
+
+
+
+
+
+
+
+
+
+
+
+    <div class="form-group">
+        <div class="col-md-offset-2 col-md-10">
+            <input type="submit" value="Create" class="btn btn-default" />
+        </div>
+    </div>
+}

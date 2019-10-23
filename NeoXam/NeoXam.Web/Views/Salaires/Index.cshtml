@@ -1,0 +1,101 @@
+﻿@model IEnumerable<NeoXam.Web.Models.salaire>
+
+@{
+    ViewBag.Title = "Accueil Salaire";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="col-sm-12">
+    <h4 class="text-secondary"> Liste de mes  Salaires</h4>
+    <div class="row">
+        <div class="col-md-5">
+
+            <input type="text" class="form-control" name="name" id="chercher" placeholder="Rechercher">
+
+        </div>
+    </div>
+    <br />
+    <div class="row">
+    </div>
+    <div class="row">
+        <div class="col-md-5">
+
+            <p>
+                @Html.ActionLink("Ajouter un salaire", "Create", new { id = "" }, new { @class = "btn btn-success" })
+            </p>
+
+        </div>
+        <div class="col-md-5">
+
+            @using (Html.BeginForm("ExportData", "Suivi", FormMethod.Post))
+            {
+
+                <button type="Submit" class="btn btn-outline-success">Exporter Excel</button>
+            }
+
+        </div>
+    </div>
+</div> 
+
+<table class="table table-striped">
+    <tr>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.bonus)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.dateCreation)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.moisEtAnne)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.salaireBrut)
+        </th>
+        <th scope="col">
+            @Html.DisplayNameFor(model => model.salaireNet)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.bonus)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.dateCreation)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.moisEtAnne)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salaireBrut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.salaireNet)
+        </td>
+        <td>
+            @Html.ActionLink("modifier", "Edit", new { id = item.idSalaire }, new { @class = "btn btn-warning" }) |
+            @Html.ActionLink("Details", "Details", new { id = item.idSalaire }, new { @class = "btn btn-info" }) |
+            @Html.ActionLink("supprimer", "Delete", new { id = item.idSalaire }, new { @class = "btn btn-danger" })
+        </td>
+    </tr>
+}
+
+</table>
+@section scripts
+{
+    <script>
+
+            $("#chercher").keyup(function(){
+                _this = this;
+                $.each($("table tr"), function() {
+                    if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
+                    {if($(this).text().toLowerCase().indexOf('Name') === -1)
+                        $(this).hide();}
+                    else
+                        $(this).show();
+                });
+            });
+    </script>
+}

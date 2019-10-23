@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:param name="param_page" value="Test Management" />
+
+	<ui:define name="ContainerPI">
+
+<h:form enctype="multipart/form-data">
+
+											<label>Titre</label>
+
+											<label>Type</label>
+
+											<label>Choisir Image</label>
+											
+									<p:outputLabel for="effect" value="Effect:" />
+  								      <p:calendar id="effect" value="#{TestBean.dateExpiration}" effect="fold" />
+					
+											<div >
+								<p:fileUpload mode="simple"></p:fileUpload>
+									</div>
+	
+											<br></br>
+											
+											
+											
+
+											
+
+										</h:form>
+
+
+<h:panelGroup columns="2">
+			<h:form>
+				<table>
+					<tr>
+						<td><h:outputText value="nom"></h:outputText></td>
+						<td><h:inputText value="#{testBean.nom}"></h:inputText></td>
+					</tr>
+
+					<tr>
+						<td><h:outputText value="type"></h:outputText></td>
+						<td><h:inputText value="#{testBean.type}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="description"></h:outputText></td>
+						<td><h:inputText value="#{testBean.description}"></h:inputText></td>
+					</tr>
+					
+					
+					       
+                    
+							
+										<tr>
+						<td><h:outputText value="Module"></h:outputText></td>
+						<td><h:selectOneMenu value="#{testBean.module}">
+								<f:selectItem itemLabel="Choisir le Role" itemValue="" />
+								<f:selectItems value="#{testEnum.roles}" />
+							</h:selectOneMenu></td>
+					</tr>
+					
+					<tr>
+				      <td>  <h:outputText value="DateExpirtation"></h:outputText></td>
+       <td>  <p:calendar id="event" value="#{testBean.dateExpiration}">
+            <p:ajax event="dateSelect" listener="#{testBean.onDateSelect}" />
+        </p:calendar>	</td>
+						</tr>
+
+
+
+					<tr>
+						<td colspan="2"><h:commandLink value="Ajouter test"
+								action="#{testBean.addTest()}" /></td>
+						<td colspan="2"><h:commandButton class="btn btn-danger" value="Ajouter Test"
+												action="#{testBean.addTest()}" >
+												</h:commandButton></td>
+					</tr>
+
+				</table>
+			</h:form>
+		</h:panelGroup>
+		
+		
+				<br />
+		<h:panelGroup columns="2">
+			<h:form>
+			
+				<h:dataTable value="#{testBean.tests}" var="test"
+					border="1">
+					<h:column>
+						<f:facet name="header"><h:outputText value="nom" /></f:facet>
+						<h:outputText value="#{test.nom}" />
+					</h:column>
+								<h:column>
+						<f:facet name="header"><h:outputText value="Date Expiration" /></f:facet>
+						<h:outputText value="#{test.dateExpiration}" />
+					</h:column>					
+					<h:column>
+						<f:facet name="header"><h:outputText value="Description" /></f:facet>
+						<h:outputText value="#{test.description}" />
+					</h:column>					
+					<h:column>
+						<f:facet name="header"><h:outputText value="Type" /></f:facet>
+						<h:outputText value="#{test.type}" />
+					</h:column>	
+					<h:column>
+					<h:commandButton class="btn btn-danger" value="delete Test"
+												action="#{testBean.deleteTest(test.idTest)}" >
+												</h:commandButton>
+					</h:column>	
+										<h:column>
+					<h:commandButton class="btn btn-danger" value="Modifier Test"
+												action="#{testBean.gotomodifyTest(test)}" >
+												</h:commandButton>
+					</h:column>	
+					
+					
+					
+								
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+		
+
+
+	</ui:define>
+
+</ui:composition>

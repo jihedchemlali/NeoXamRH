@@ -1,0 +1,43 @@
+﻿@model NeoXam.Domain.Entities.candidat
+
+<div>
+    <h4>candidat</h4>
+    <hr />
+    <table class="table table-responsive table-hover" style="margin-left:40%">
+        <tr class="table-primary table-bordered" >
+            <td style="margin-left:20px">
+                
+                @Html.DisplayFor(model => model.adresse, new { @style = "color:black;font-weight:bold;" })
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Email, new { @style = "color:black;font-weight:bold;" })
+            </td>
+        </tr>
+        <tr class="table-primary">
+            <td>
+                @Html.DisplayFor(model => model.image, new { @style = "color:black;font-weight:bold;" })
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.linkedin, new { @style = "color:black;font-weight:bold;" })
+            </td>
+        </tr>
+        <tr class="table-primary" >
+            <td>
+                @Html.DisplayFor(model => model.Nom, new { @style = "color:black;font-weight:bold;" })
+            </td>
+            <td>
+                @Html.DisplayFor(model => model.Prenom, new { @style = "color:black;font-weight:bold;" })
+            </td>                             
+        </tr>
+        <tr class="table-primary">
+            <td >
+                @Html.DisplayFor(model => model.resume, new { @style = "color:black;font-weight:bold;" })
+            </td>
+        </tr>
+    </table>
+    
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.CIN }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

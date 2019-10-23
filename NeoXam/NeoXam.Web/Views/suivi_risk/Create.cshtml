@@ -1,0 +1,123 @@
+﻿@using System.Web.UI.WebControls
+@model NeoXam.Domain.Entities.suivi_risk
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutAhmed.cshtml";
+}
+<style>
+    #radioBtn .notActive{
+        color: #3276b1;
+        background-color: #fff;
+    }
+
+    #idequipe {
+        display: none;
+    }
+</style>
+<h2>Create</h2>
+
+
+
+
+
+@using (Html.BeginForm()) 
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="form-horizontal">
+        <h4>suivi risk</h4>
+        <hr />
+        
+        
+
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.idcritere, "Critere", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownList("idcritere", null, "choisir Critere", htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idcritere, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="happy" class=" control-label text-right">Ajouter Suivi Pour  ?</label>
+            <div class="col-sm-7 col-md-7">
+                <div class="input-group">
+                    <div id="radioBtn" class="btn-group">
+                        <a class="btn btn-primary btn-sm active" data-toggle="happy" data-title="Y">Employe</a>
+                        <a class="btn btn-primary btn-sm notActive" data-toggle="happy" data-title="N">Equipe</a>
+                    </div>
+                    <input type="hidden" name="happy" id="happy">
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group data-title='N'" id="idEmploye">
+            @Html.LabelFor(model => model.CIN, "Employe", htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownList("CIN", null, "choisir employee", htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.CIN, "", new {@class = "text-danger"})
+            </div>
+        </div>
+
+        <div class="form-group data-title='Y'" id="idequipe">
+            @Html.LabelFor(model => model.idEquipe, "Equipe", htmlAttributes: new {@class = "control-label col-md-2"})
+            <div class="col-md-10">
+                @Html.DropDownList("idEquipe", null, "choisir Equipe", htmlAttributes: new {@class = "form-control"})
+                @Html.ValidationMessageFor(model => model.idEquipe, "", new {@class = "text-danger"})
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Valeur, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Valeur, new { htmlAttributes = new { @class = "form-control" ,PlaceHolder="Donner La Valeur du Risque "} })
+                @Html.ValidationMessageFor(model => model.Valeur, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-primary"/>
+                @Html.ActionLink("Back to List", "Index",null, new { @class = "btn btn-warning" })
+
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    
+</div>
+@section scripts
+{ 
+ 
+
+
+    <script>
+
+        $('#radioBtn a').on('click', function () {
+            var sel = $(this).data('title');
+            var tog = $(this).data('toggle');
+            $('#' + tog).prop('value', sel);
+
+            $('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
+            $('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
+          console.log(sel);
+          if (sel === 'Y') {
+              $("#idEmploye").toggle();
+              $("#idequipe").hide();
+         
+          } else {
+              $("#idequipe").toggle();
+              $("#idEmploye").hide();
+
+          }
+
+           
+        })
+
+    </script>
+}

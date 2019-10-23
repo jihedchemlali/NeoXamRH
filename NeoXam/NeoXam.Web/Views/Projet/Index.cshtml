@@ -1,0 +1,104 @@
+﻿@model IEnumerable<NeoXam.Web.Models.produit>
+
+@{
+    ViewBag.Title = "Liste projet";
+    
+}
+
+<h2>Index22</h2>
+@Html.ActionLink("Enregistrer", "Details22")
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.datedeDebut)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.datefin)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.type)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.datedeDebut)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.datefin)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.type)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idPro }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idPro }) |
+            @Ajax.ActionLink("Delete", "Delete", new { id = item.idPro }, new AjaxOptions { Confirm = "Are you sure you want to delete this entry?", HttpMethod = "DELETE", OnSuccess = "RemoveRow" }, new { @class = "btn btn-danger glyphicon glyphicon-trash" })
+        </td>
+    </tr>
+}
+
+</table>
+
+<input type="text" id="search_input" class="form-control" placeholder="Rechercher un message par sujet">
+
+<div id="search_output" style="left: 0px; top: -10.5px;">
+
+
+</div>
+
+
+@section scripts{ @Scripts.Render("~/Scripts/jquery.unobtrusive-ajax.min.js")}
+<script type="text/javascript">
+    function RemoveRow() {
+        var $tr = $(this).closest('tr');
+        $tr.remove();
+    }
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<script type="text/javascript">
+
+        $("#search_input").keyup(function () {
+           // alert("hello");
+
+                                                var i = $("#search_input").val();
+                                                $.ajax({
+                                                    type: "POST",
+                                                    url: "http://localhost:43725/Projet/GetSearch",
+                                                    dataType: 'json',
+                                                    data:{'search':i},
+                                                    success: function (Data) {
+                                                        console.log(Data);
+                                                        $("#search_output").html("<table id='res' class='table table-striped table-bordered' cellspacing='0' width='100%'><thead><tr><th>idPro</th> <th>nom </th> <th>type</th> </tr></thead><tbody>");
+                                                        $.each(Data, function (key, value) {
+
+                                                            $('#res').append(
+                                                                            "<tr>" +
+                                                                            "<td>" + value.idPro + "</td>" +
+                                                                            "<td>" + value.nom + "</td>" +
+                                                                            "<td>" + value.type + "</td>" +
+                                                                            "</tr>");
+                                                            $('#res').append("</tbody></table>");
+
+
+                                                        })
+                                                      }
+                                                    ,
+                                                    error: function (error) {
+                                                        console.log(error);
+                                                    }
+                                                });
+        });
+</script>

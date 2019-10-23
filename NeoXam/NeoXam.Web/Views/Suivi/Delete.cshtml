@@ -1,0 +1,62 @@
+﻿@model NeoXam.Web.Models.suivi
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<div class="col-sm-12">
+    <h4 class="text-secondary"> Supprimer le  suivi</h4>
+    <h3 class="text-danger">Vous voulez supprimer le suivi?</h3>
+</div>
+
+
+<div>
+    <h4>suivi</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.CIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DateSuivi)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DateSuivi)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EntretrienTCarriere)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EntretrienTCarriere)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Eval)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Eval)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            <div>
+                @Html.ActionLink("Retour à mes Suivi", "Index", new { id = "" }, new { @class = "btn btn-outline-info" })
+            </div>
+        </div>
+    }
+</div>

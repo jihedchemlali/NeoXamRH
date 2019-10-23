@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://java.sun.com/jsf/core"     xmlns:h="http://java.sun.com/jsf/html"
+    xmlns:ui="http://java.sun.com/jsf/facelets"     template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+<ui:param name="param_page" value="Dossiers des candidats" />
+
+
+<ui:define name="ContainerPI">   
+			 <h:form enctype="multipart/form-data"   style="float:right"  prependId="false">
+					<h:outputText value="Inserer PST" ></h:outputText>
+					<h:inputFile value="#{fileUploadView.uploadedFile}"  />
+				<h:commandButton  value="Parse" type="submit" action="#{fileUploadView.saveFile}" style="background-color: #e7e7e7; color: black;"></h:commandButton>
+			</h:form>   
+				
+			<h:form id="formc">
+				<table>
+				
+					<tr>
+						<td><h:outputText value="CIN "></h:outputText></td>
+						<td>
+						<h:inputText value="#{candidatBean.cin}" required="true" requiredMessage="*" >
+						<f:validateRegex pattern="[0-9]{8}"></f:validateRegex>
+						</h:inputText>
+						</td>
+						<td><h:outputText value="Adresse"></h:outputText></td>
+						<td>
+						<h:inputText value="#{candidatBean.adresse}" required="true" >
+						<f:passThroughAttribute name="placeHolder" value="rue x ville" />
+						</h:inputText>
+						</td>
+					</tr>
+					
+					<tr>
+						<td><h:outputText value="Nom"></h:outputText></td>
+						<td>
+						<h:inputText value="#{candidatBean.nom}" required="true" >
+						<f:validateRegex pattern="^[_A-Za-z]*$" />
+						</h:inputText>						
+						</td>
+						<td><h:outputText value="Téléphone"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.numTel}" required="true" >
+						<f:validateRegex pattern="[0-9]{8}" />
+						</h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Prenom"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.prenom}" required="true" >
+						<f:validateRegex pattern="^[_A-Za-z]*$" />
+						</h:inputText></td>
+						<td><h:outputText value="LinkedIn"></h:outputText></td>
+						<td>
+						<h:inputText value="#{candidatBean.linkedin}" required="true" >
+						<f:validateRegex pattern="^[_A-Za-z]*$" />
+						</h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Email"></h:outputText></td>
+						<td><h:inputText value="#{candidatBean.email}" required="true" >
+						<f:validateRegex pattern="^[_A-Za-z0-9-\+]+(\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\.[A-Za-z0-9]+)*(\.[A-Za-z]{2,})$" />
+						</h:inputText></td>
+						<td><h:outputText value="Resume"></h:outputText></td>
+						<td>
+						<h:inputText value="#{candidatBean.resume}" required="true" >
+						<f:validateRegex pattern="^[_A-Za-z]*$" />
+						</h:inputText></td>
+					</tr>
+				
+					
+					<tr>
+				
+						<td colspan="2"><h:commandLink value="Ajouter Candidat"
+								action="#{candidatBean.addCandidat()}" /></td>
+								<td>							
+								<h:commandLink value="Mettre à jour" update="formc"
+							action="${candidatBean.UpdateNav()}" />
+							</td>
+					</tr>
+					
+				</table>
+			</h:form>
+		                              	  
+			<h:form id="form">	
+			 <h3 style="margin-top:0">Listes des candidats</h3>
+						<p:dataTable var="cand" value="#{candidatBean.candidats}" id="singleDT"  selectionMode="single" selection="#{candidatBean.selectedCandidat}" rowKey="#{cand.cin}" widgetVar="candidatsTable"  emptyMessage="No cars found with given criteria" filteredValue="#{candidatBean.filtredCandidats}">
+							  <f:facet name="header">
+           					 <p:outputPanel>
+              			  <h:outputText value="Search all fields:" />
+             			   <p:inputText id="globalFilter" onkeyup="PF('candidatsTable').filter()" style="width:150px" placeholder="Enter keyword"/>
+          					  </p:outputPanel>
+       					 </f:facet>
+						    <p:column headerText="CIN" width="95" filterBy="#{cand.cin}" filterStyle="display: none" >
+						        <h:outputText value="#{cand.cin}" />
+						    </p:column>						 
+						    <p:column headerText="Nom" width="110" filterBy="#{cand.nom}" filterStyle="display: none">
+						        <h:outputText value="#{cand.nom}" />
+						    </p:column>						 
+						    <p:column headerText="Prenom" width="110" filterBy="#{cand.prenom}" filterStyle="display: none">
+						        <h:outputText value="#{cand.prenom}" />
+						    </p:column>
+						     <p:column headerText="Email">
+						        <h:outputText value="#{cand.email}" />
+						    </p:column>
+						     <p:column headerText="Téléphone" width="110">
+						        <h:outputText value="#{cand.numTel}" />
+						    </p:column>
+						     <p:column headerText="Adresse" width="240">
+						        <h:outputText value="#{cand.adresse}" />
+						    </p:column>	
+						    <p:column headerText="" width="47">
+						        <h:commandButton value="X" action="#{candidatBean.delete(cand.cin)}" />		
+						        				        
+						    </p:column>
+						 
+											 
+      						<p:column width="47">      					
+								<p:commandButton  value="M"  update="formc" 
+									action="#{candidatBean.update(cand)}" />
+      						</p:column>   	
+      						     	<f:facet name="footer">
+           							 <p:commandButton process="singleDT" update=":form:tabViewglob" icon="ui-icon-search" value="View" />           							 
+       							 </f:facet>      						 				    						     						 		    
+						</p:dataTable>		             
+			   <p:growl id="msgs" showDetail="true" />			 
+			    <h3 style="margin-top:0">Informations éducatifs et professionnelles</h3>
+			    <p:tabView id="tabViewglob">
+			        <p:tab id="cursustab"    title="Cursus universitaire">
+			           <h:panelGrid columns="2" cellpadding="10">
+			                <p:dataTable  id="cursusdt" var="cursu"  value="#{candidatBean.selectedCandidat.cursuses}">
+							    						 
+							    <p:column headerText="Nom">
+							        <h:outputText value="#{diplomeBean.getDiplomeNameById(cursu.id.diplomeId)}" />
+							    </p:column>							 
+							    <p:column headerText="Type">
+							        <h:outputText value="#{diplomeBean.getDiplomeTypeById(cursu.id.diplomeId)}" />
+							    </p:column>
+							 
+							    <p:column headerText="Année début">
+							        <h:outputText value="#{cursu.anneeDeb}" />
+							    </p:column>
+							    <p:column headerText="Année Fin">
+							        <h:outputText value="#{cursu.anneeFin}" />
+							    </p:column>
+							    <p:column headerText="Mention">
+							        <h:outputText value="#{cursu.mention}" />
+							    </p:column>
+							</p:dataTable>
+			            </h:panelGrid>
+			        </p:tab>
+			        <p:tab id="skillstab"    title="Competences" >
+			            <h:panelGrid columns="2" cellpadding="10">
+			                <p:dataTable id="skillsdt" var="comp" value="#{candidatBean.selectedCandidat.skillses}">						 
+							    <p:column headerText="Tag">
+							        <h:outputText value="#{competenceBean.getCompTagById(comp.id.idCompetence)}" />
+							    </p:column>							 
+							    <p:column headerText="Type">
+							        <h:outputText value="#{competenceBean.getCompTypeById(comp.id.idCompetence)}" />
+							    </p:column>							 
+							    <p:column headerText="Niveau">
+							        <h:outputText value="#{comp.niveau}" />
+							    </p:column>
+							    <p:column headerText="Description">
+							        <h:outputText value="#{comp.description}" />
+							    </p:column>							    
+							    <p:column headerText="Vérifier">
+							        <h:outputText value="#{comp.verifier}" />
+							    </p:column>
+							</p:dataTable>
+			            </h:panelGrid>
+			        </p:tab>
+			        <p:tab id="carriretab"   title="Expériences professionnelles" >
+			            <h:panelGrid columns="2" cellpadding="10">
+			                <p:dataTable id="carrieredt" var="experience" value="#{candidatBean.selectedCandidat.carrieres}">							   
+							 
+							    <p:column headerText="Nom">
+							        <h:outputText value="#{experienceBean.getExpNameById(experience.id.idExpe)}" />
+							    </p:column>
+							 
+							    <p:column headerText="Type">
+							        <h:outputText value="#{experienceBean.getExpTypeById(experience.id.idExpe)}" />
+							    </p:column>
+							 
+							    <p:column headerText="Date début">
+							        <h:outputText value="#{experience.dateDep}" />
+							    </p:column>
+							    <p:column headerText="Date Fin">
+							        <h:outputText value="#{experience.dateFin}" />
+							    </p:column>
+							    <p:column headerText="Niveau">
+							        <h:outputText value="#{experience.niveau}" />
+							    </p:column>
+							    <p:column headerText="Societe">
+							        <h:outputText value="#{experience.societe}" />
+							    </p:column>
+							</p:dataTable>
+			            </h:panelGrid>
+			        </p:tab>
+			    </p:tabView>
+			
+			</h:form>
+    			
+                        		
+
+                    
+                
+</ui:define>
+</ui:composition>

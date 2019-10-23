@@ -1,0 +1,65 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.suivi_risk>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAhmed.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.critere.fait)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.employe.Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.equipe.labelEquipe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Date_Suivi)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Valeur)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.critere.fait)
+        </td>
+        <td>
+        @foreach (var a in item.employe.suivi_risk)
+        {
+            <ul>
+                <li>
+                    a.
+                </li>
+            </ul>
+        }
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.equipe.labelEquipe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Date_Suivi)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Valeur)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.idSuiviRisk }) |
+            @Html.ActionLink("Details", "Details", new { id=item.idSuiviRisk }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.idSuiviRisk })
+        </td>
+    </tr>
+}
+
+</table>

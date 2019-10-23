@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="Connexion" />
+	<ui:param name="param_page" value="Question Management" />
+
+	<ui:define name="ContainerPI">
+
+<h:form enctype="multipart/form-data">
+
+											<label>Titre</label>
+
+											<label>Type</label>
+
+											<label>Choisir Image</label>
+											
+									<p:outputLabel for="effect" value="Effect:" />
+  								      <p:calendar id="effect" value="#{TestBean.dateExpiration}" effect="fold" />
+					
+											<div >
+								<p:fileUpload mode="simple"></p:fileUpload>
+									</div>
+	
+											<br></br>
+											
+											
+											
+
+											
+
+										</h:form>
+
+
+<h:panelGroup columns="2">
+			<h:form>
+				<table>
+					<tr>
+						<td><h:outputText value="Contenu Question"></h:outputText></td>
+						<td><h:inputText value="#{questionBean.contenue}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Type"></h:outputText></td>
+						<td><h:inputText value="#{questionBean.type}"></h:inputText></td>
+					</tr>
+					<tr>
+						<td><h:outputText value="Reponse"></h:outputText></td>
+						<td><h:inputText value="#{questionBean.reponse}"></h:inputText></td>
+					</tr>					<tr>
+						<td><h:outputText value="Choix 1"></h:outputText></td>
+						<td><h:inputText value="#{questionBean.choixA}"></h:inputText></td>
+					</tr>					<tr>
+						<td><h:outputText value="Choix 2"></h:outputText></td>
+						<td><h:inputText value="#{questionBean.choixB}"></h:inputText></td>
+					</tr>					<tr>
+						<td><h:outputText value="Choix 3"></h:outputText></td>
+						<td><h:inputText value="#{questionBean.choixC}"></h:inputText></td>
+					</tr>
+				<tr>
+						<td><h:outputText value="Test"></h:outputText></td>
+						<td><h:selectOneMenu value="#{questionBean.idQuestion}">
+								<f:selectItem itemLabel="Choisir le Type" itemValue="" />
+								<f:selectItems value="#{questionBean.questionID}" />
+							</h:selectOneMenu></td>
+					</tr>
+						<tr>
+						<td><h:outputText value="Test type"></h:outputText></td>
+						<td><h:selectOneMenu value="#{questionBean.test}">
+										<f:selectItem itemLabel="choisir une..." itemValue="" />
+										<f:selectItems value="#{questionBean.questionList}" var="quest"
+										itemValue="#{quest}" itemLabel="#{quest.type}" />
+									</h:selectOneMenu></td>
+					</tr>
+				
+					<tr>
+						<td colspan="2"><h:commandLink value="Ajouter Question"
+								action="#{questionBean.addQuestion()}" /></td>
+						<td colspan="2"><h:commandButton class="btn btn-danger" value="Ajouter Question"
+												action="#{questionBean.addQuestion()}" >
+												</h:commandButton></td>
+					</tr>
+
+				</table>
+			</h:form>
+		</h:panelGroup>
+		
+		
+				<br />
+		<h:panelGroup columns="2">
+			<h:form>
+			
+				<h:dataTable value="#{questionBean.questions}" var="question"
+					border="1">
+					<h:column>
+						<f:facet name="header"><h:outputText value="Type" /></f:facet>
+						<h:outputText value="#{question.type}" />
+					</h:column>
+										<h:column>
+						<f:facet name="header"><h:outputText value="Contenu" /></f:facet>
+						<h:outputText value="#{question.contenue}" />
+					</h:column>
+										<h:column>
+						<f:facet name="header"><h:outputText value="Reponse" /></f:facet>
+						<h:outputText value="#{question.reponse}" />
+					</h:column>
+										<h:column>
+						<f:facet name="header"><h:outputText value="choix 1" /></f:facet>
+						<h:outputText value="#{question.choixA}" />
+					</h:column>
+										<h:column>
+						<f:facet name="header"><h:outputText value="choix 2" /></f:facet>
+						<h:outputText value="#{question.choixB}" />
+					</h:column>
+										<h:column>
+						<f:facet name="header"><h:outputText value="choix 3" /></f:facet>
+						<h:outputText value="#{question.choixC}" />
+					</h:column>
+										<h:column>
+						<f:facet name="header"><h:outputText value="Type" /></f:facet>
+						<h:outputText value="#{question.type}" />
+					</h:column>
+								
+					<h:column>
+					<h:commandButton class="btn btn-danger" value="delete Question"
+												action="#{questionBean.deleteQuestion(question.idQuestion)}" >
+												</h:commandButton>
+					</h:column>	
+					
+					<h:column>
+					<h:commandButton class="btn btn-danger" value="Modifier Test"
+												action="#{questionBean.gotomodifyQuestion(question)}" >
+												</h:commandButton>
+					</h:column>	
+					
+					
+					
+								
+				</h:dataTable>
+			</h:form>
+		</h:panelGroup>
+		
+
+
+	</ui:define>
+
+</ui:composition>

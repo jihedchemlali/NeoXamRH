@@ -1,0 +1,101 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>NeoXam - Pidev Contrat</title>
+
+
+	<link rel="shortcut icon"
+		href="../../resources/assets/images/Souslogo.jpeg" />
+	<link rel="stylesheet"
+		href="../../resources/assets/plugins/morris/morris.css" />
+	<link href="../../resources/assets/css/bootstrap.min.css"
+		rel="stylesheet" type="text/css" />
+	<link href="../../resources/assets/css/icons.css" rel="stylesheet"
+		type="text/css" />
+	<link href="../../resources/assets/css/style.css" rel="stylesheet"
+		type="text/css" />
+
+
+	<link
+		href="https://cdn.rawgit.com/Eonasdan/bootstrap-datetimepicker/e8bddc60e73c1ec2475f827be36e1957af72e2ea/build/css/bootstrap-datetimepicker.css"
+		rel="stylelsheet" />
+
+
+
+</h:head>
+<script name="jquery/jquery.js" library="primefaces"></script>
+
+
+<h:body class="fixed-left">
+	<div id="wrapper" style="">
+		<ui:include src="/template/SideBar.xhtml" />
+
+		<!-- Start right Content here -->
+
+		<div class="content-page">
+			<!-- Start content -->
+			<div class="content">
+
+				<div class="page-content-wrapper ">
+
+					<div class="container-fluid">
+
+						<div class="alert alert-info">Ajout Contrat</div>
+
+						<h:panelGroup columns="2">
+
+
+
+							<div class="col-md-6">
+								<h:form>
+
+									<p:outputLabel for="dateDebut" value="Date debut:" />
+									<p:calendar id="dateDebut" value="#{ContratBean.dateDep}"
+										mode="inline" />
+									<br />
+
+									<p:outputLabel for="dateFin" value="date fin:" />
+									<p:calendar id="dateFin" value="#{ContratBean.dateFin}"
+										mode="inline" />
+									<br />
+									<h:selectOneMenu value="#{ContratBean.type}"
+										class="form-control">
+										<f:selectItem itemLabel="CDI" itemValue="CDI" />
+										<f:selectItem itemLabel="CDD" itemValue="CDD" />
+										<f:selectItem itemLabel="SIVP" itemValue="SIVP" />
+
+
+									</h:selectOneMenu>
+									
+									<h:selectOneMenu id="cin" value="#{ContratBean.cinn}"
+										required="true" requiredMessage="Employe obligatoire">
+										<f:selectItem itemLabel="Choisir le nouveau employe"
+											itemValue="" />
+										<f:selectItems value="#{ContratBean.employes2()}" var="emp"
+											itemValue="#{emp.cin}" itemLabel="#{emp.cin}" />
+									</h:selectOneMenu>
+									<br />
+									<h:commandButton id="btn" value="Ajouter" 
+										action="#{ContratBean.addContrat()}" class="btn btn-success" />
+
+
+
+								</h:form>
+							</div>
+						</h:panelGroup>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
+
+</h:body>
+</html>

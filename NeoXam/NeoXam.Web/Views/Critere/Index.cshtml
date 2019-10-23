@@ -1,0 +1,100 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.critere>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAhmed.cshtml";
+}
+
+<h2>Index</h2>
+
+
+
+<table id="criteres" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.idcritere)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.fait)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.risque)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+    @foreach (var item in Model) {
+
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.idcritere)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.fait)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.risque)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new {id = item.idcritere}, new { @class = "btn btn-success" }) |
+                @Html.ActionLink("Details", "Details", new {id = item.idcritere}, new { @class = "btn btn-warning"})  |
+
+                <button dat-critere-id="@item.idcritere" class="btn-link js-delete btn btn-danger">Delete</button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>
+
+<div class="row">
+
+    @Html.ActionLink("Create New", "Create", new { @class = "btn btn-primary" })
+</div>
+@section scripts
+{ 
+ 
+
+
+    <script>
+
+       $(document).ready(function () {
+           $("#criteres").DataTable();
+           $("#criteres .js-delete").on("click",function() {
+               //var button = $(this);
+               //bootbox.confirm("Are you sure you want to delete this critere ?", function(result) {
+               //    if (result) {
+               //        $.ajax({
+               //            url: "/Critere/Delete/" + button.attr("dat-critere-id"),
+               //            methode: "DELETE",
+               //            success: function () {
+               //                button.closest("tr").remove();
+               //            }
+               //        });
+               //    }
+               //});
+               ////if (confirm("Are you sure you want to delete this critere ?" + button.attr("dat-critere-id"))) {
+
+               ////}
+
+
+
+               var button = $(this);
+               if (confirm("Are you sure you want to delete this critere ?" + button.attr("dat-critere-id"))) {
+
+               
+                       $.ajax({
+                           url: "/Critere/Delete/" + button.attr("dat-critere-id"),
+                           methode: "DELETE",
+                           success: function () {
+                               button.closest("tr").remove();
+                           }
+                       });
+               }
+               });
+              
+       });
+
+   </script>
+}

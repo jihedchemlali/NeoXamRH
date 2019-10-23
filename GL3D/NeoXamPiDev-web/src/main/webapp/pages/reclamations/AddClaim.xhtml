@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	template="/template/template.xhtml" xmlns:p="http://primefaces.org/ui">
+	<ui:param name="page_name" value="NeoXam-ADD Claim" />
+	<ui:param name="param_page" value="Faire une réclamation" />
+
+	<ui:define name="ContainerPI">
+		<div class="card">
+
+
+			<div class="p-3">
+				<h:form id="form" class="form-horizontal m-t-20">
+
+					<div class="form-group row">
+						<div class="col-4">
+							<p:outputLabel value="Motif" />
+						</div>
+						<div class="col-8">
+							<h:selectOneMenu value="#{ReclamationBean.motifs}" class="form-control">
+								<f:selectItem itemLabel="Sur salaire" itemValue="paie" />
+								<f:selectItem itemLabel="remonté" itemValue="remonte" />
+								<f:selectItem itemLabel="autre" itemValue="autre" />
+							</h:selectOneMenu>
+
+						</div>
+					</div>
+
+					<div class="form-group row">
+						<div class="col-12">
+							<p:outputLabel value="Description" />
+							<p:inputTextarea rows="5" cols="30" counter="display"
+								maxlength="1000" counterTemplate="{0} characters remaining."
+								autoResize="false" class="form-control"
+								type="description"
+								name="description"
+								value="#{ReclamationBean.description}" />
+							<h:outputText id="display" />
+						</div>
+					</div>
+
+
+
+					<div class="form-group text-center row m-t-20">
+						<div class="col-12">
+
+							<p:commandButton
+								class="btn btn-info btn-block waves-effect waves-light" id="btn"
+								value="Réclamer" action="#{ReclamationBean.addReclamation()}" />
+							<h:message for="btn" showDetail="true" closable="true" />
+						</div>
+
+					</div>
+
+				</h:form>
+			</div>
+
+		</div>
+	</ui:define>
+
+</ui:composition>

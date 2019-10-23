@@ -1,0 +1,81 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.stagiaire>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/promise-polyfill"></script>
+    <script src="~/sweetalert/sweetalert2.min.js"></script>
+    <link rel="stylesheet" href="~/sweetalert/sweetalert2.min.css">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<div id="page-wrapper" style="min-height: 703px;">
+    <h2>Liste des stagiaires</h2>
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-bordered">
+        <thead class="thead-dark">
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.nom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.prenom)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.age)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.sexe)
+                </th>
+                <th>
+                    @Html.DisplayName("Delete")
+                </th>
+                <th>
+                    @Html.DisplayName("Edit")
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in ViewBag.result)
+            {
+                <tr>
+                    <td>
+                        @item.nom
+                    </td>
+                    <td>
+                        @item.prenom
+                    </td>
+                    <td>
+                        @item.age
+                    </td>
+                    <td>
+                        @item.sexe
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-danger" href="@Url.Action("Delete", "Stagaire", new { id = item.id })">Supprimer</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-info" href="@Url.Action("Edit", "Stagaire", new { id = item.id })">Modifier</a>
+                        </div>
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a class="btn btn-info" href="@Url.Action("Details", "Stagaire", new { id = item.id })">Details</a>
+                        </div>
+                    </td>
+                                      
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

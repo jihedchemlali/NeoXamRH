@@ -1,0 +1,36 @@
+﻿@model IEnumerable<NeoXam.Domain.Entities.equipe>
+
+@{
+    ViewBag.Title = "Liste équipe";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.labelEquipe)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.produit.nom)
+        </th>
+        
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.labelEquipe)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.produit.nom)
+        </td>
+        
+    </tr>
+}
+
+</table>
